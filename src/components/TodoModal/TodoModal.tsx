@@ -10,11 +10,7 @@ type Props = {
   onClose: () => void;
 };
 
-export const TodoModal: React.FC<Props> = ({
-  todo,
-  user,
-  onClose,
-}) => {
+export const TodoModal: React.FC<Props> = ({ todo, user, onClose }) => {
   return (
     <div className="modal is-active" data-cy="modal">
       <div className="modal-background" onClick={onClose} />
@@ -56,9 +52,7 @@ export const TodoModal: React.FC<Props> = ({
 
               {' by '}
 
-              <a href={`mailto:${user.email}`}>
-                {user.name}
-              </a>
+              <a href={`mailto:${user.email}`}>{user.name}</a>
             </p>
           </div>
         </div>
