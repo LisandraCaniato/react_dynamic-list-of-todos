@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 import { Todo } from '../../types/Todo';
 import { User } from '../../types/User';
 import { Loader } from '../Loader';
@@ -9,7 +10,11 @@ type Props = {
   onClose: () => void;
 };
 
-export const TodoModal: React.FC<Props> = ({ todo, user, onClose }) => {
+export const TodoModal: React.FC<Props> = ({
+  todo,
+  user,
+  onClose,
+}) => {
   return (
     <div className="modal is-active" data-cy="modal">
       <div className="modal-background" onClick={onClose} />
@@ -41,16 +46,19 @@ export const TodoModal: React.FC<Props> = ({ todo, user, onClose }) => {
 
             <p className="block" data-cy="modal-user">
               <strong
-                className={
-                  todo.completed ? 'has-text-success' : 'has-text-danger'
-                }
+                className={classNames({
+                  'has-text-success': todo.completed,
+                  'has-text-danger': !todo.completed,
+                })}
               >
                 {todo.completed ? 'Done' : 'Planned'}
               </strong>
 
               {' by '}
 
-              <a href={`mailto:${user.email}`}>{user.name}</a>
+              <a href={`mailto:${user.email}`}>
+                {user.name}
+              </a>
             </p>
           </div>
         </div>

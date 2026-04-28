@@ -1,3 +1,6 @@
+import React from 'react';
+import classNames from 'classnames';
+
 type Props = {
   query: string;
   setQuery: (value: string) => void;
@@ -40,16 +43,19 @@ export const TodoFilter: React.FC<Props> = ({
         <i className="fas fa-magnifying-glass" />
       </span>
 
-      {query && (
-        <span className="icon is-right" style={{ pointerEvents: 'all' }}>
-          <button
-            data-cy="clearSearchButton"
-            type="button"
-            className="delete"
-            onClick={() => setQuery('')}
-          />
-        </span>
-      )}
+      <span
+        className={classNames('icon is-right', {
+          'is-hidden': !query,
+        })}
+        style={{ pointerEvents: 'all' }}
+      >
+        <button
+          data-cy="clearSearchButton"
+          type="button"
+          className="delete"
+          onClick={() => setQuery('')}
+        />
+      </span>
     </p>
   </form>
 );

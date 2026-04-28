@@ -28,6 +28,7 @@ export const App: React.FC = () => {
 
     try {
       const data = await getTodos();
+
       setTodos(data);
     } finally {
       setLoading(false);
